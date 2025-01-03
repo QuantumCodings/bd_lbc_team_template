@@ -13,11 +13,12 @@ italics)*
 this template for more guidance on the types of information to capture, and the
 level of detail to aim for.*
 
-## *Project Title* Design
+## *calender/ task list site* Design
 
 ## 1. Problem Statement
 
-*Explain clearly what problem you are trying to solve.*
+*i want to make an easy to use calender task completion website that is defined by lower amount of clicks where most sites and apps
+having you put in alot of data for each part of the calender*
 
 
 ## 2. Top Questions to Resolve in Review
@@ -25,9 +26,9 @@ level of detail to aim for.*
 *List the most important questions you have about your design, or things that
 you are still debating internally that you might like help working through.*
 
-1.   
-2.   
-3.  
+1.   want to make it so you can put in tasks besides typing the name of task in less than 3 clicks
+2.   want to impletement a ranking system base on importance for each thing
+3.  the calender might be interactable
 
 ## 3. Use Cases
 
@@ -35,7 +36,7 @@ you are still debating internally that you might like help working through.*
 would like to do (and why). You may also include use cases for yourselves, or
 for the organization providing the product to customers.*
 
-U1. *As a [product] customer, I want to `<result>` when I `<action>`*
+U1. *As a [product] customer, I want to `be notified` when I `have a task coming up in 2 hours or a choice of time beforehand`*
 
 U2. *As a [product] customer, I want to view my grocery list when I log into the
 grocery list page*
