@@ -17,8 +17,7 @@ level of detail to aim for.*
 
 ## 1. Problem Statement
 
-*i want to make an easy to use calender task completion website that is defined by lower amount of clicks where most sites and apps
-having you put in alot of data for each part of the calender*
+*i want to make an easy to use shop website for a drink shop with deals and subscriptions delivery and the rest
 
 
 ## 2. Top Questions to Resolve in Review
@@ -26,9 +25,9 @@ having you put in alot of data for each part of the calender*
 *List the most important questions you have about your design, or things that
 you are still debating internally that you might like help working through.*
 
-1.   want to make it so you can put in tasks besides typing the name of task in less than 3 clicks
-2.   want to impletement a ranking system base on importance for each thing
-3.  the calender might be interactable
+1.   want to make it so you can check order history
+2.   want to implement a subscription merits
+3.  want to add at least 3 items
 
 ## 3. Use Cases
 
@@ -36,10 +35,9 @@ you are still debating internally that you might like help working through.*
 would like to do (and why). You may also include use cases for yourselves, or
 for the organization providing the product to customers.*
 
-U1. *As a [product] customer, I want to `be notified` when I `have a task coming up in 2 hours or a choice of time beforehand`*
+U1. *As a [product] customer, I want to `be notified` when I `when any sales come up`*
 
-U2. *As a [product] customer, I want to view my grocery list when I log into the
-grocery list page*
+U2. *As a [product] customer, I want to view order history on the site*
     
 U3. ...
 
@@ -52,21 +50,18 @@ your design.*
 
 ### 4.1. In Scope
 
-*Which parts of the problem defined in Sections 1 and 3 will you solve with this
-design?*
+*it makes the website an easy frequent to use delivery machine?*
 
 ### 4.2. Out of Scope
 
-*Based on your problem description in Sections 1 and 3, are there any aspects
-you are not planning to solve? Do potential expansions or related problems occur
-to you that you want to explicitly say you are not worrying about now? Feel free
-to put anything here that you think your team can't accomplish in the unit, but
-would love to do with more time.*
+*their are problems i wont be solving there can always be more improvements into the virtual shop afterwords.*
 
 # 5. Proposed Architecture Overview
 
 *Describe broadly how you are proposing to solve for the requirements you
 described in Section 3.*
+i plan to build a drink shop from juices to coffee to tea, with customization that can be ordered for pick up and delivery
+in a most efficient way
 
 *This may include class diagram(s) showing what components you are planning to
 build.*
@@ -79,7 +74,32 @@ requirements.*
 # 6. API
 
 ## 6.1. Public Models
+openapi: 3.0.0
+info:
+  title: Squeeze & Steep
+  description: Api for the store Squeeze & Steep a tea, juice, coffee shop
+  version: 0.1.9
 
+servers:
+  - url: http://www.Squeeze & Steep.com(fakefornow)
+    description: the website for the shop
+  - url: http://www.Squeeze & Steep.com/subscribe(fakefornow)
+    description: Subscribing to Squeeze & Steep for updates
+
+paths:
+  /subscribe:
+    get:
+      summary: adds your subscription
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        "200": # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
 *Define the data models your service will expose in its responses via your
 *`-Model`* package. These will be equivalent to the *`PlaylistModel`* and
 *`SongModel`* from the Unit 3 project.*
