@@ -1,0 +1,6 @@
+// Reorder
+orderID // partition key, string
+memberID // string
+price // float
+address // string
+date // string (ISO 8601 format)

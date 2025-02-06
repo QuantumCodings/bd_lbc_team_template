@@ -1,0 +1,7 @@
+// Orders
+orderID // partition key, string
+memberID // string
+price // float
+address // string
+discountCode // string (optional)
+deliveryTime // string (ISO 8601 format, optional)

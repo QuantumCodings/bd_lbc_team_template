@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info:
+  title: Squeeze & Steep
+  description: Api for the store Squeeze & Steep a tea, juice, coffee shop
+  version: 0.1.9
+
+servers:
+  - url: http://www.Squeeze & Steep.com(fakefornow)
+    description: the website for the shop
+  - url: http://www.Squeeze & Steep.com/subscribe(fakefornow)
+    description: Subscribing to Squeeze & Steep for updates
+  - url: http://www.Squeeze & Steep.com/events
+    description: The website for upcoming events and activities
+
+paths:
+  /subscribe:
+    get:
+      summary: adds your subscription
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        "200": # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /order:
+    post:
+      summary: Place an order
+      description: Places an order with a memberID, price, and delivery address.
+      parameters:
+        - name: discountCode
+          in: query
+          description: Optional discount code for the order.
+          required: false
+          schema:
+            type: string
+        - name: deliveryTime
+          in: query
+          description: Preferred delivery time in ISO 8601 format.
+          required: false
+          schema:
+            type: string
+            format: date-time
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                memberID:
+                  type: string
+                  description: The unique identifier of the member placing the order.
+                price:
+                  type: number
+                  format: float
+                  description: The total price of the order.
+                address:
+                  type: string
+                  description: The delivery address for the order.
+              required:
+                - memberID
+                - price
+                - address
+      responses:
+        "200":
+          description: Order successfully placed.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Order placed successfully"
+                  orderID:
+                    type: string
+                    description: Unique ID of the placed order.
+        "400":
+          description: Bad Request - Invalid input
+        "500":
+          description: Internal Server Error
+  /orders/{memberID}:
+    get:
+      summary: Get previous orders
+      description: Retrieves a list of previous orders for a given memberID.
+      parameters:
+        - name: memberID
+          in: path
+          required: true
+          description: The unique identifier for the member whose orders are being requested.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A list of previous orders for the member.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    orderID:
+                      type: string
+                      description: The unique identifier of the order.
+                    price:
+                      type: number
+                      format: float
+                      description: The total price of the order.
+                    address:
+                      type: string
+                      description: The delivery address for the order.
+                    date:
+                      type: string
+                      format: date-time
+                      description: The date when the order was placed.
+        "404":
+          description: No orders found for the given memberID.
+        "500":
+          description: Internal Server Error
+  /events:
+    get:
+      summary: Get upcoming events
+      description: Retrieves a list of upcoming events hosted by Squeeze & Steep.
+      responses:
+        "200":
+          description: A list of upcoming events.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    eventID:
+                      type: string
+                      description: The unique identifier of the event.
+                    eventName:
+                      type: string
+                      description: The name of the event.
+                    eventDate:
+                      type: string
+                      format: date-time
+                      description: The date and time of the event.
+                    location:
+                      type: string
+                      description: The location where the event will be held.
+                    description:
+                      type: string
+                      description: A short description of the event.
+        "404":
+          description: No upcoming events found.
+        "500":
+          description: Internal Server Error
+    post:
+      summary: Subscribe to event notifications
+      description: Subscribe to receive notifications about upcoming events.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                memberID:
+                  type: string
+                  description: The unique identifier of the member subscribing to events.
+                email:
+                  type: string
+                  format: email
+                  description: The email address to send event notifications to.
+              required:
+                - memberID
+                - email
+      responses:
+        "200":
+          description: Successfully subscribed to event notifications.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Successfully subscribed to event notifications."
+        "400":
+          description: Bad Request - Invalid input
+        "500":
+          description: Internal Server Error
+  

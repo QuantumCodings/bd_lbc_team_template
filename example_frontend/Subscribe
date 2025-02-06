@@ -1,0 +1,4 @@
+//Subscribe
+subscriptionID // partition key, string
+memberID // string
+email // string

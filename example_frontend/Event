@@ -1,0 +1,6 @@
+// Event
+eventID // partition key, string
+eventName // string
+eventDate // string (ISO 8601 format)
+location // string
+description // string
